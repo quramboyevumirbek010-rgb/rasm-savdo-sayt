@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rasm Savdo - Chiroyli rasmlar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><h1>RasmSavdo</h1></div>
+            <nav class="nav">
+                <a href="#home">Bosh sahifa</a>
+                <a href="#products">Mahsulotlar</a>
+                <a href="#about">Biz haqimizda</a>
+                <a href="#contact">Aloqa</a>
+            </nav>
+            <div class="cart-icon" id="cartIcon">Savatcha (<span id="cartCount">0</span>)</div>
+        </div>
+    </header>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Chiroyli rasmlar bilan uyingizni bezang!</h2>
+                <p>Professional suratchilar tomonidan olingan noyob rasmlar. Devor bezaklari, kartinalar va fotosuratlar.</p>
+                <a href="#products" class="btn">Mahsulotlarni ko'rish</a>
+            </div>
+        </div>
+    </section>
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Mahsulotlar</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Hammasi</button>
+                <button class="filter-btn" data-filter="tabiat">Tabiat</button>
+                <button class="filter-btn" data-filter="shahar">Shahar</button>
+                <button class="filter-btn" data-filter="abstrakt">Abstrakt</button>
+                <button class="filter-btn" data-filter="portret">Portret</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Biz haqimizda</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Nima uchun bizni tanlashadi?</h3>
+                    <ul>
+                        <li>Professional suratchilar ishlari</li>
+                        <li>Yuqori sifatli chop etish</li>
+                        <li>Turli o'lchamlarda mavjud</li>
+                        <li>Butun O'zbekiston bo'ylab yetkazib berish</li>
+                        <li>30 kunlik qaytarish kafolati</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat"><h4>500+</h4><p>Rasmlar</p></div>
+                    <div class="stat"><h4>1000+</h4><p>Mijozlar</p></div>
+                    <div class="stat"><h4>50+</h4><p>Suratchilar</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Aloqa</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item"><h4>Telefon</h4><p>+998 XX XXX XX XX</p></div>
+                    <div class="contact-item"><h4>Telegram</h4><p>@mening_dokonim_urganch_bot</p></div>
+                    <div class="contact-item"><h4>Manzil</h4><p>Urganch shahri</p></div>
+                    <div class="contact-item"><h4>Ish vaqti</h4><p>Dushanba - Shanba: 9:00 - 21:00</p></div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Ismingiz" required>
+                    <input type="tel" placeholder="Telefon raqam" required>
+                    <textarea placeholder="Xabaringiz" rows="4" required></textarea>
+                    <button type="submit" class="btn">Yuborish</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>Savatcha</h3><span class="close-btn" id="closeCart">&times;</span></div>
+            <div class="modal-body" id="cartItems"></div>
+            <div class="modal-footer">
+                <div class="cart-total">Jami: <span id="cartTotal">0</span> so'm</div>
+                <button class="btn" id="orderBtn">Buyurtma berish</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>Buyurtma berish</h3><span class="close-btn" id="closeOrder">&times;</span></div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    <input type="text" id="orderName" placeholder="Ismingiz" required>
+                    <input type="tel" id="orderPhone" placeholder="Telefon raqam" required>
+                    <input type="text" id="orderAddress" placeholder="Manzil" required>
+                    <button type="submit" class="btn">Tasdiqlash</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer"><div class="container"><p>RasmSavdo 2024-2026</p></div></footer>
+    <script src="script.js"></script>
+</body>
+</html>
