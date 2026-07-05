@@ -8,6 +8,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- PAROL HIMOYASI - Kirish ekrani -->
+    <div id="lockScreen" class="lock-screen">
+        <div class="lock-container">
+            <div class="lock-icon">&#128274;</div>
+            <h2>Saytga kirish</h2>
+            <p>Kirish kodini kiriting</p>
+            <input type="password" id="accessCode" class="lock-input" placeholder="Kodni kiriting..." maxlength="4" autocomplete="off">
+            <button id="unlockBtn" class="lock-btn">Kirish</button>
+            <p id="lockError" class="lock-error" style="display:none;">Noto'g'ri kod! Qaytadan urinib ko'ring.</p>
+        </div>
+    </div>
+
+    <!-- Asosiy sayt kontenti (yashirin) -->
+    <div id="mainContent" style="display:none;">
     <header class="header">
         <div class="container">
             <div class="logo"><h1>RasmSavdo</h1></div>
@@ -122,6 +136,51 @@
         </div>
     </div>
     <footer class="footer"><div class="container"><p>RasmSavdo 2024-2026</p></div></footer>
+    </div><!-- mainContent yopilishi -->
+
+    <script>
+    // PAROL HIMOYASI SKRIPTI
+    (function() {
+        var SECRET_CODE = "2113";
+        var lockScreen = document.getElementById("lockScreen");
+        var mainContent = document.getElementById("mainContent");
+        var accessCode = document.getElementById("accessCode");
+        var unlockBtn = document.getElementById("unlockBtn");
+        var lockError = document.getElementById("lockError");
+
+        // Agar oldin kirgan bo'lsa, sessiya davomida qayta so'ramaslik
+        if (sessionStorage.getItem("unlocked") === "true") {
+            lockScreen.style.display = "none";
+            mainContent.style.display = "block";
+        }
+
+        function tryUnlock() {
+            var code = accessCode.value.trim();
+            if (code === SECRET_CODE) {
+                lockScreen.style.display = "none";
+                mainContent.style.display = "block";
+                sessionStorage.setItem("unlocked", "true");
+                lockError.style.display = "none";
+            } else {
+                lockError.style.display = "block";
+                accessCode.value = "";
+                accessCode.focus();
+                // Tebranish animatsiyasi
+                var container = document.querySelector(".lock-container");
+                container.classList.add("shake");
+                setTimeout(function() { container.classList.remove("shake"); }, 500);
+            }
+        }
+
+        unlockBtn.addEventListener("click", tryUnlock);
+        accessCode.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") tryUnlock();
+        });
+
+        // Sahifa yuklanganda input ga fokus
+        accessCode.focus();
+    })();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
